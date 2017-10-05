@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>Zeus-Grid Statistics</title>
+  <link rel="stylesheet" href="../slick.grid.css" type="text/css"/>
+  <link rel="stylesheet" href="../css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
+  <link rel="stylesheet" href="examples.css" type="text/css"/>
+</head>
+<body>
+<table width="100%">
+  <tr align>
+    <td align="center" width="50%">
+      <div id="myGrid" style="width:1255px;height:650px;"></div>
+    </td>
+    
+    <td valign="top">
+      <!-- <h2>Demonstrates:</h2>
+      <ul>
+        <li>basic grid with minimal configuration</li>
+      </ul> -->
+        <!-- <h2>View Source:</h2>
+        <ul>
+            <li><A href="https://github.com/mleibman/SlickGrid/blob/gh-pages/examples/example1-simple.html" target="_sourcewindow"> View the source for this example on Github</a></li>
+        </ul> -->
+    </td>
+  </tr>
+</table>
+
+<script src="../lib/jquery-1.7.min.js"></script>
+<script src="../lib/jquery.event.drag-2.2.js"></script>
+
+<script src="../slick.core.js"></script>
+<script src="../slick.grid.js"></script>
+
+<script>
+  var grid;
+  var columns = [
+    {id: "s-no", name: "S.No.", field: "sno"},
+    {id: "class-name", name: "Class Name", field: "className"},
+    {id: "method-name", name: "Method Name", field: "methodName"},
+    {id: "num-invocations", name: "Num invocations", field: "numInvocations"},
+    {id: "max-total-time", name: "Max Total Time (ms)", field: "maxTotalTime"},
+    {id: "min-total-time", name: "Min Total Time (ms)", field: "minTotalTime"},
+    {id: "avg-total-time", name: "Avg Total Time (ms)", field: "avgTotalTime"},
+    {id: "max-shelf-time", name: "Max Shelf Time (ms)", field: "maxShelfTime"},
+    {id: "min-shelf-time", name: "Min Shelf Time (ms)", field: "minShelfTime"},
+    {id: "avg-shelf-time", name: "Avg Shelf Time (ms)", field: "avgShelfTime"}
+    
+
+  ];
+
+  var options = {
+    enableCellNavigation: true,
+    enableColumnReorder: false
+  };
+
+//   var textarray = [
+//  "hi",
+//  "hello",
+//  "how r u",
+//  "where r u"    // No comma after last entry
+// ];
+
+// function RndText() {
+//   var rannum= Math.floor(Math.random()*textarray.length);
+//   document.getElementById('ShowText').innerHTML=textarray[rannum];
+// }
+// onload = function() { RndText(); }
+
+  $(function () {
+  
+    var noOfRowdata = 500;
+    var data = [];
+    for (var i = 0; i < noOfRowdata; i++) {
+      data[i] = {
+        sno: i+1,
+        className: "SpringBootWebApplication",
+        methodName: "<init>",
+        numInvocations: Math.round(Math.random()),
+        maxTotalTime: Math.round(Math.random()*10),
+        minTotalTime: Math.round(Math.random()*10),
+        avgTotalTime: Math.round(Math.random()*10),
+        maxShelfTime: Math.round(Math.random()*10),
+        minShelfTime: Math.round(Math.random()*10),
+        avgShelfTime: Math.round(Math.random()*10)
+      };
+    }
+
+    grid = new Slick.Grid("#myGrid", data, columns, options);
+  })
+
+</script>
+</body>
+</html>
